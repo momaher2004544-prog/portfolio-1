@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "name": "Mohamed Maher",
+    "tagline": "Performance marketing & e-commerce — for brands that want results, not impressions.",
+    "taglineAr": "تسويق رقمي وتجارة إلكترونية للعلامات التجارية التي تريد نتائج حقيقية",
+    "viewWork": "View Work",
+    "contactMe": "Contact Me",
+    "workedWith": "Worked with clients across Egypt, Europe, and beyond."
+  },
+  "stats": {
+    "revenue": "ج.م.1M+ Revenue Driven",
+    "orders": "814 Orders Generated",
+    "roas": "4.2x Average ROAS",
+    "liveBrand": "1 Live Brand Operated",
+    "continents": "Clients Across 3 Continents"
+  },
+  "services": {
+    "metaAds": {
+      "title": "Meta Ads",
+      "titleAr": "إعلانات ميتا",
+      "description": "Prospecting and retargeting campaigns for e-commerce and lead generation. Built for ROAS, not vanity metrics."
+    },
+    "googleAdsB2B": {
+      "title": "Google Ads for B2B",
+      "titleAr": "إعلانات جوجل للشركات",
+      "description": "Search and display campaigns targeting decision-makers and high-intent buyers. Not broad audiences — the right people at the right moment."
+    },
+    "shopifyManagement": {
+      "title": "Shopify Management",
+      "titleAr": "إدارة شوبيفاي",
+      "description": "Store setup, conversion optimization, product pages, and automation. Built to sell."
+    },
+    "seo": {
+      "title": "SEO",
+      "titleAr": "تحسين محركات البحث",
+      "description": "Organic growth for long-term traffic. Technical SEO, content strategy, and keyword targeting."
+    },
+    "websiteDevelopment": {
+      "title": "Website Development",
+      "titleAr": "تطوير المواقع",
+      "description": "Clean, fast, conversion-focused websites using React and Next.js."
+    },
+    "codeConsulting": {
+      "title": "Code Consulting",
+      "titleAr": "استشارات برمجية",
+      "description": "Frontend architecture, code review, and technical guidance for non-technical founders."
+    }
+  },
+  "caseStudy": {
+    "title": "Case Study: Roqqei",
+    "subtitle": "رُقيّ — Egyptian Women's Fashion Brand",
+    "problem": "Problem",
+    "whatIDid": "What I Did",
+    "results": "Results",
+    "timeline": "Timeline",
+    "storeAudit": "Store Audit",
+    "metaLaunch": "Meta Ads Launch",
+    "scaling": "Scaling",
+    "note": "This is a live brand I own and operate — every number is real."
+  },
+  "credibility": {
+    "title": "Worked with businesses across Egypt, the Middle East, Europe, and beyond."
+  },
+  "about": {
+    "en": "Cairo-based digital marketer and e-commerce specialist. Self-taught frontend developer with React and Next.js experience. Background in Meta Ads, Google Ads, Shopify, and SEO. Building a freelance practice focused on performance marketing for e-commerce and B2B businesses. Worked with clients locally and internationally. Honest, no fluff.",
+    "ar": "مسوق رقمي ومتخصص في التجارة الإلكترونية مقيم في القاهرة. مطور أمامي ذاتي التعلم مع خبرة في React و Next.js. خلفية في إعلانات ميتا، إعلانات جوجل، شوبيفاي، وتحسين محركات البحث. أسس ممارسة مستقلة مركزة على التسويق القائم على الأداء للتجارة الإلكترونية والشركات B2B. عمل مع عملاء محليين ودوليين. صادق، بدون تكلف."
+  },
+  "contact": {
+    "headline": "Working with the right clients, not every client.",
+    "subline": "If you need results-driven marketing — let's talk.",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company Name",
+    "message": "Message",
+    "send": "Send Message",
+    "whatsapp": "WhatsApp Me"
+  }
+}
