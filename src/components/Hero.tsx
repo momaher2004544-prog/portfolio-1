@@ -60,24 +60,24 @@ export default function Hero() {
     <section id="work" className="min-h-screen flex items-center px-4 md:px-8 lg:px-12">
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
         {/* LEFT COLUMN */}
-        <motion.div
-          className="lg:col-span-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-7xl xl:text-8xl mb-6 leading-tight">
-            {name.split('').map((letter, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.1, delay: index * 0.04 }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </h1>
+          <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-7xl xl:text-8xl mb-6 leading-tight">
+              {name.split('').map((letter, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 1, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.1, delay: index * 0.04 }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </h1>
 
           <motion.div
             className="space-y-3 mb-6"

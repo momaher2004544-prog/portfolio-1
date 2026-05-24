@@ -23,9 +23,11 @@ export function generateStaticParams() {
 export async function generateMetadata({params: {locale}}: {params: {locale: string}}) {
   return {
     alternates: {
+      canonical: `https://mo-maher.vercel.app/${locale}`,
       languages: {
-        'en': '/en',
-        'ar': '/ar',
+        'x-default': 'https://mo-maher.vercel.app/en',
+        'en': 'https://mo-maher.vercel.app/en',
+        'ar': 'https://mo-maher.vercel.app/ar',
       },
     },
   };
