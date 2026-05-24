@@ -111,6 +111,7 @@ export default function Chatbot() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? 'Close chat' : 'Open chat'}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -234,7 +235,9 @@ export default function Chatbot() {
             {/* Input */}
             <div className="p-3 border-t border-border bg-card">
               <div className="flex gap-2">
+                <label htmlFor="chatbot-input" className="sr-only">Ask me anything</label>
                 <input
+                  id="chatbot-input"
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -248,6 +251,7 @@ export default function Chatbot() {
                   onClick={() => sendMessage()}
                   disabled={!input.trim() || isLoading}
                   className="bg-accent text-black p-2.5 rounded-xl hover:bg-opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  aria-label="Send message"
                 >
                   <Send className="w-4 h-4" />
                 </motion.button>

@@ -95,10 +95,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            <button className="px-6 py-3 border border-accent text-accent hover:bg-accent hover:text-black transition-colors text-sm font-mono">
+            <button className="px-6 py-3 border border-accent text-accent hover:bg-accent hover:text-black transition-colors text-sm font-mono" aria-label={t('viewWork')}>
               {t('viewWork')}
             </button>
-            <button className="px-6 py-3 bg-accent text-black hover:bg-opacity-90 transition-colors text-sm font-mono">
+            <button className="px-6 py-3 bg-accent text-black hover:bg-opacity-90 transition-colors text-sm font-mono" aria-label={t('contactMe')}>
               {t('contactMe')}
             </button>
           </motion.div>
@@ -154,7 +154,9 @@ export default function Hero() {
 
             {/* Input */}
             <div className="flex gap-2 pt-3 border-t border-border mt-3">
+              <label htmlFor="hero-chat-input" className="sr-only">Ask me anything</label>
               <input
+                id="hero-chat-input"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -165,6 +167,7 @@ export default function Hero() {
               <button
                 onClick={sendMessage}
                 className="bg-accent text-black p-3 rounded-xl hover:bg-opacity-90 transition-colors flex-shrink-0"
+                aria-label="Send message"
               >
                 <Send className="w-4 h-4" />
               </button>

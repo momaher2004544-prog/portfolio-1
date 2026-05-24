@@ -20,6 +20,17 @@ export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }
 
+export async function generateMetadata({params: {locale}}: {params: {locale: string}}) {
+  return {
+    alternates: {
+      languages: {
+        'en': '/en',
+        'ar': '/ar',
+      },
+    },
+  };
+}
+
 export default async function LocaleLayout({
   params: {locale}
 }: {
@@ -35,13 +46,15 @@ export default async function LocaleLayout({
       <div className={`min-h-screen ${locale === 'ar' ? 'rtl' : ''}`}>
         <ScrollProgressBar />
         <Navbar />
-        <Hero />
-        <Stats />
-        <Services />
-        <CaseStudy />
-        <CredibilityStrip />
-        <About />
-        <Contact />
+        <main id="main-content">
+          <Hero />
+          <Stats />
+          <Services />
+          <CaseStudy />
+          <CredibilityStrip />
+          <About />
+          <Contact />
+        </main>
         <Footer />
         <CustomCursor />
       </div>

@@ -56,6 +56,7 @@ export default function Navbar() {
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="font-display text-xl text-accent tracking-wide"
+            aria-label="Home"
           >
             MM
           </button>
@@ -100,6 +101,7 @@ export default function Navbar() {
             <button
               className="text-foreground"
               onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -125,7 +127,7 @@ export default function Navbar() {
               transition={{ type: 'tween', duration: 0.3 }}
             >
               <div className="flex justify-end">
-                <button onClick={() => setMenuOpen(false)}>
+                <button onClick={() => setMenuOpen(false)} aria-label="Close menu">
                   <X className="w-5 h-5 text-foreground" />
                 </button>
               </div>

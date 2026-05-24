@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={`${dmSerifDisplay.variable} ${dmMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${dmSerifDisplay.variable} ${dmMono.variable}`} suppressHydrationWarning>
       <body className="font-mono">
         <Providers>{children}</Providers>
       </body>

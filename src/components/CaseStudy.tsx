@@ -101,6 +101,7 @@ export default function CaseStudy() {
                   <button
                     onClick={() => setActivePhase(index)}
                     className="flex flex-col items-center gap-2 px-6"
+                    aria-label={`Phase ${index + 1}: ${phase.label}`}
                   >
                     <span className={`font-mono text-sm ${
                       activePhase === index ? 'text-accent' : 'text-text-dim'

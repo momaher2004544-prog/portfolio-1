@@ -40,8 +40,9 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm text-text-muted mb-2">{t('name')}</label>
+                <label htmlFor="contact-name" className="block text-sm text-text-muted mb-2">{t('name')}</label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
                   className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
@@ -50,8 +51,9 @@ export default function Contact() {
                 <ValidationError field="name" errors={state.errors} />
               </div>
               <div>
-                <label className="block text-sm text-text-muted mb-2">{t('email')}</label>
+                <label htmlFor="contact-email" className="block text-sm text-text-muted mb-2">{t('email')}</label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
                   className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
@@ -62,8 +64,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm text-text-muted mb-2">{t('company')}</label>
+              <label htmlFor="contact-company" className="block text-sm text-text-muted mb-2">{t('company')}</label>
               <input
+                id="contact-company"
                 type="text"
                 name="company"
                 className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
@@ -71,8 +74,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm text-text-muted mb-2">{t('message')}</label>
+              <label htmlFor="contact-message" className="block text-sm text-text-muted mb-2">{t('message')}</label>
               <textarea
+                id="contact-message"
                 name="message"
                 rows={5}
                 className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
