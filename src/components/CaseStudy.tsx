@@ -65,27 +65,27 @@ export default function CaseStudy() {
         >
           <p className="text-xs font-mono tracking-widest text-accent mb-4">PROOF OF WORK</p>
           <h2 className="font-display text-4xl md:text-5xl mb-2">{t('title')}</h2>
-          <p className="text-gray-400 mb-12">{t('subtitle')}</p>
+          <p className="text-text-muted mb-12">{t('subtitle')}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-left">
-            <div className="bg-gray-900 p-8 border border-gray-800">
+            <div className="bg-card p-8 border border-border">
               <h3 className="font-display text-xl mb-4 accent-text">{t('problem')}</h3>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-foreground/70">
                 Roqqei needed a complete digital marketing overhaul. The store had a 0.49% conversion rate, no structured ad campaigns, and was operating without clear targeting or optimization.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-8 border border-gray-800">
+            <div className="bg-card p-8 border border-border">
               <h3 className="font-display text-xl mb-4 accent-text">{t('whatIDid')}</h3>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-foreground/70">
                 Audited the entire store, rebuilt product pages, launched Meta Ads with prospecting and retargeting campaigns, optimized checkout flow, and implemented conversion tracking.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-8 border border-gray-800">
+            <div className="bg-card p-8 border border-border">
               <h3 className="font-display text-xl mb-4 accent-text">{t('results')}</h3>
-              <ul className="text-sm text-gray-300 space-y-2">
-                <li><AnimatedNumber value="ج.م.1M+" /> total revenue</li>
+              <ul className="text-sm text-foreground/70 space-y-2">
+                <li>ج.م.1M+ total revenue</li>
                 <li>ج.م.<AnimatedNumber value="42" /> CPA on Meta Ads</li>
                 <li><AnimatedNumber value="4.2" suffix="x" /> ROAS</li>
                 <li>Conversion rate: 0.49% → <AnimatedNumber value="1" suffix="%" />+</li>
@@ -103,17 +103,17 @@ export default function CaseStudy() {
                     className="flex flex-col items-center gap-2 px-6"
                   >
                     <span className={`font-mono text-sm ${
-                      activePhase === index ? 'text-accent' : 'text-gray-500'
+                      activePhase === index ? 'text-accent' : 'text-text-dim'
                     }`}>
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <div className={`w-4 h-4 rounded-full border-2 transition-colors ${
                       activePhase === index
                         ? 'border-accent bg-accent'
-                        : 'border-gray-600 bg-transparent'
+                        : 'border-border bg-transparent'
                     }`} />
                     <span className={`font-mono text-sm whitespace-nowrap transition-colors ${
-                      activePhase === index ? 'text-accent' : 'text-gray-400'
+                      activePhase === index ? 'text-accent' : 'text-text-muted'
                     }`}>
                       {phase.label}
                     </span>
@@ -126,7 +126,7 @@ export default function CaseStudy() {
             </div>
           </div>
 
-          <p className="text-sm text-gray-500 italic">{t('note')}</p>
+          <p className="text-sm text-text-dim italic">{t('note')}</p>
         </motion.div>
       </div>
     </section>

@@ -17,7 +17,7 @@ export default function Hero() {
   const taglineAr = t('taglineAr');
 
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hi 👋 I'm Mo's AI assistant. Ask me anything about his services, experience, or how to work with him." }
+    { role: 'assistant', content: "Hey — I'm Mo's assistant. What's your business working on right now?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +57,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="work" className="min-h-screen flex items-center px-4 md:px-8 lg:px-12 py-24 pt-32">
+    <section id="work" className="min-h-screen flex items-center px-4 md:px-8 lg:px-12">
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
         {/* LEFT COLUMN */}
         <motion.div
@@ -86,7 +86,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 1.0 }}
           >
             <h2 className="text-base sm:text-lg md:text-xl font-mono accent-text">{tagline}</h2>
-            <h2 className="text-sm sm:text-base md:text-lg font-mono text-gray-400">{taglineAr}</h2>
+            <h2 className="text-sm sm:text-base md:text-lg font-mono text-text-muted">{taglineAr}</h2>
           </motion.div>
 
           <motion.div
@@ -104,7 +104,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.p
-            className="text-xs sm:text-sm text-gray-500 font-mono"
+            className="text-xs sm:text-sm text-text-dim font-mono"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.5 }}
@@ -121,11 +121,11 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div
-            style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '20px' }}
-            className="bg-[#0E0E0D] flex flex-col h-[420px]"
+            style={{ border: '1px solid var(--border)', borderRadius: '16px', padding: '20px' }}
+            className="bg-background flex flex-col h-[420px]"
           >
             {/* Header */}
-            <div className="flex items-center gap-2 pb-3 border-b border-white/10 mb-3">
+            <div className="flex items-center gap-2 pb-3 border-b border-border mb-3">
               <span className="w-2 h-2 bg-green-500 rounded-full inline-block" />
               <span className="text-xs font-mono text-accent tracking-wider">MO'S ASSISTANT</span>
             </div>
@@ -138,14 +138,14 @@ export default function Hero() {
                   className={`p-3 rounded-xl text-sm leading-relaxed ${
                     msg.role === 'user'
                       ? 'bg-accent/20 text-foreground ml-6'
-                      : 'bg-white/5 text-gray-200 mr-6'
+                      : 'bg-card text-foreground/80 mr-6'
                   }`}
                 >
                   {msg.content}
                 </div>
               ))}
               {isLoading && (
-                <div className="bg-white/5 text-gray-200 p-3 rounded-xl text-sm mr-6">
+                <div className="bg-card text-foreground/80 p-3 rounded-xl text-sm mr-6">
                   Thinking...
                 </div>
               )}
@@ -153,14 +153,14 @@ export default function Hero() {
             </div>
 
             {/* Input */}
-            <div className="flex gap-2 pt-3 border-t border-white/10 mt-3">
+            <div className="flex gap-2 pt-3 border-t border-border mt-3">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-sm font-mono text-foreground outline-none focus:border-accent transition-colors placeholder:text-gray-600"
+                className="flex-1 bg-transparent border border-border rounded-xl px-4 py-3 text-sm font-mono text-foreground outline-none focus:border-accent transition-colors placeholder:text-text-dim"
               />
               <button
                 onClick={sendMessage}

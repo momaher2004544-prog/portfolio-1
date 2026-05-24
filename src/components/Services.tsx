@@ -43,7 +43,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 px-4 md:px-8 lg:px-12 bg-gray-950">
+    <section id="services" className="py-20 px-4 md:px-8 lg:px-12 bg-card-secondary">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -53,14 +53,14 @@ export default function Services() {
         >
           <p className="text-xs font-mono tracking-widest text-accent mb-4">WHAT I DO</p>
           <h2 className="font-display text-4xl md:text-5xl mb-4">Services</h2>
-          <p className="text-gray-400">Performance marketing solutions for real results</p>
+          <p className="text-text-muted">Performance marketing solutions for real results</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.key}
-              className="group bg-gray-900 p-8 border border-gray-800 transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(186,117,23,0.15)]"
+              className="group bg-card p-8 border border-border transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(186,117,23,0.15)]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
@@ -68,8 +68,8 @@ export default function Services() {
             >
               <div className="mb-4 accent-text transition-transform duration-300 group-hover:rotate-[10deg]">{service.icon}</div>
               <h3 className="font-display text-xl mb-2">{t(`${service.key}.title`)}</h3>
-              <h4 className="text-sm text-gray-400 mb-4">{t(`${service.key}.titleAr`)}</h4>
-              <p className="text-sm text-gray-300">{t(`${service.key}.description`)}</p>
+              <h4 className="text-sm text-text-muted mb-4">{t(`${service.key}.titleAr`)}</h4>
+              <p className="text-sm text-foreground/70">{t(`${service.key}.description`)}</p>
             </motion.div>
           ))}
         </div>

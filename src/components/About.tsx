@@ -19,13 +19,13 @@ export default function About() {
           <h2 className="font-display text-4xl md:text-5xl mb-12 text-center">About</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="text-sm text-gray-300 leading-relaxed">
+            <div className="text-sm text-foreground/70 leading-relaxed">
               <p className="mb-4">
                 {t('en')}
               </p>
             </div>
 
-            <div className="text-sm text-gray-300 leading-relaxed" dir="rtl">
+            <div className="text-sm text-foreground/70 leading-relaxed" dir="rtl">
               <p className="mb-4">
                 {t('ar')}
               </p>

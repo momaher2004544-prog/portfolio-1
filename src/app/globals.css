@@ -5,6 +5,30 @@
 :root {
   --font-display: 'DM Serif Display', serif;
   --font-mono: 'DM Mono', monospace;
+  --bg: #0E0E0D;
+  --text: #F5F2EC;
+  --accent: #BA7517;
+  --card: #1A1A18;
+  --card-secondary: #111110;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
+  --input-bg: #1A1A18;
+}
+
+[data-theme='light'] {
+  --bg: #F5F2EC;
+  --text: #0E0E0D;
+  --accent: #BA7517;
+  --card: #FFFFFF;
+  --card-secondary: #F0EDE7;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-light: rgba(0, 0, 0, 0.05);
+  --text-muted: #6B7280;
+  --text-dim: #9CA3AF;
+  --input-bg: #FFFFFF;
+  --navbar-bg: rgba(245, 242, 236, 0.8);
 }
 
 html {
@@ -12,10 +36,11 @@ html {
 }
 
 body {
-  background-color: #0E0E0D;
-  color: #F5F2EC;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-mono);
   animation: fadeInBody 0.4s ease-out;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 @keyframes fadeInBody {
@@ -24,10 +49,10 @@ body {
 }
 
 .accent-text {
-  color: #BA7517;
+  color: var(--accent);
 }
 
 ::selection {
-  background: #BA7517;
-  color: #0E0E0D;
+  background: var(--accent);
+  color: var(--bg);
 }

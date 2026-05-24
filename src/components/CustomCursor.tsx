@@ -57,7 +57,7 @@ export default function CustomCursor() {
       <div
         className="w-full h-full rounded-full"
         style={{
-          backgroundColor: '#BA7517',
+          backgroundColor: 'var(--accent)',
           transition: 'all 0.15s ease-out',
         }}
       />

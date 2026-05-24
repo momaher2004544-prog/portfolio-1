@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
 
 const sections = [
   { id: 'work', label: 'Work' },
@@ -16,6 +17,10 @@ export default function Navbar() {
   const [active, setActive] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -41,10 +46,10 @@ export default function Navbar() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 lg:px-12 transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(14,14,13,0.8)' : 'transparent',
+          background: scrolled ? 'var(--navbar-bg, rgba(14,14,13,0.8))' : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid var(--border-light)' : '1px solid transparent',
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
@@ -62,21 +67,43 @@ export default function Navbar() {
                 key={s.id}
                 onClick={() => scrollTo(s.id)}
                 className={`text-xs font-mono tracking-wider uppercase transition-colors ${
-                  active === s.id ? 'text-accent' : 'text-gray-400 hover:text-foreground'
+                  active === s.id ? 'text-accent' : 'text-text-muted hover:text-foreground'
                 }`}
               >
                 {s.label}
               </button>
             ))}
+
+            {/* Theme toggle */}
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="text-text-muted hover:text-accent transition-colors ml-4"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            )}
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setMenuOpen(true)}
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+          {/* Mobile hamburger + theme */}
+          <div className="flex md:hidden items-center gap-3">
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="text-text-muted hover:text-accent transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            )}
+            <button
+              className="text-foreground"
+              onClick={() => setMenuOpen(true)}
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -91,7 +118,7 @@ export default function Navbar() {
           >
             <div className="flex-1 bg-black/50" onClick={() => setMenuOpen(false)} />
             <motion.div
-              className="w-64 bg-[#0E0E0D] border-l border-white/10 p-8 flex flex-col gap-6"
+              className="w-64 bg-background border-l border-border p-8 flex flex-col gap-6"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -107,7 +134,7 @@ export default function Navbar() {
                   key={s.id}
                   onClick={() => scrollTo(s.id)}
                   className={`text-sm font-mono tracking-wider uppercase text-left ${
-                    active === s.id ? 'text-accent' : 'text-gray-400'
+                    active === s.id ? 'text-accent' : 'text-text-muted'
                   }`}
                 >
                   {s.label}

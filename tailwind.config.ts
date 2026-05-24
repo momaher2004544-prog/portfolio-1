@@ -9,9 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0E0E0D",
-        foreground: "#F5F2EC",
-        accent: "#BA7517",
+        background: "var(--bg)",
+        foreground: "var(--text)",
+        accent: "var(--accent)",
+        card: "var(--card)",
+        "card-secondary": "var(--card-secondary)",
+        "text-muted": "var(--text-muted)",
+        "text-dim": "var(--text-dim)",
+        "input-bg": "var(--input-bg)",
+        "navbar-bg": "var(--navbar-bg)",
+      },
+      borderColor: {
+        DEFAULT: "var(--border)",
+        light: "var(--border-light)",
       },
       fontFamily: {
         'display': ['DM Serif Display', 'serif'],

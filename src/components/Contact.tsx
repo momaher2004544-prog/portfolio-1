@@ -2,34 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { Loader2 } from 'lucide-react';
 
 export default function Contact() {
   const t = useTranslations('contact');
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Replace YOUR_FORMSPREE_ID with actual Formspree ID
-    const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formState)
-    });
-
-    if (response.ok) {
-      alert('Message sent!');
-      setFormState({ name: '', email: '', company: '', message: '' });
-    }
-  };
+  const [state, handleSubmit] = useForm('xqejzbkj');
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-8 lg:px-12 bg-gray-950">
+    <section id="contact" className="py-20 px-4 md:px-8 lg:px-12 bg-card-secondary">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -41,64 +22,89 @@ export default function Contact() {
           <h2 className="font-display text-4xl md:text-5xl mb-4 text-center">
             {t('headline')}
           </h2>
-          <p className="text-gray-400 text-center mb-12">
+          <p className="text-text-muted text-center mb-12">
             {t('subline')}
           </p>
 
+          {state.succeeded ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-16"
+            >
+              <p className="font-display text-2xl text-accent">
+                ✓ Message sent! Mo will get back to you within 24 hours.
+              </p>
+            </motion.div>
+          ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm text-gray-400 mb-2">{t('name')}</label>
+                <label className="block text-sm text-text-muted mb-2">{t('name')}</label>
                 <input
                   type="text"
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full p-3 bg-gray-900 border border-gray-800 focus:border-accent outline-none transition-colors"
+                  name="name"
+                  className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
                   required
                 />
+                <ValidationError field="name" errors={state.errors} />
               </div>
               <div>
-                <label className="block text-sm text-gray-400 mb-2">{t('email')}</label>
+                <label className="block text-sm text-text-muted mb-2">{t('email')}</label>
                 <input
                   type="email"
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full p-3 bg-gray-900 border border-gray-800 focus:border-accent outline-none transition-colors"
+                  name="email"
+                  className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
                   required
                 />
+                <ValidationError field="email" errors={state.errors} />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm text-gray-400 mb-2">{t('company')}</label>
+              <label className="block text-sm text-text-muted mb-2">{t('company')}</label>
               <input
                 type="text"
-                value={formState.company}
-                onChange={(e) => setFormState({ ...formState, company: e.target.value })}
-                className="w-full p-3 bg-gray-900 border border-gray-800 focus:border-accent outline-none transition-colors"
+                name="company"
+                className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-400 mb-2">{t('message')}</label>
+              <label className="block text-sm text-text-muted mb-2">{t('message')}</label>
               <textarea
-                value={formState.message}
-                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                name="message"
                 rows={5}
-                className="w-full p-3 bg-gray-900 border border-gray-800 focus:border-accent outline-none transition-colors"
+                className="w-full p-3 bg-card border border-border focus:border-accent outline-none transition-colors"
                 required
               />
+              <ValidationError field="message" errors={state.errors} />
             </div>
+
+            {state.errors && !state.succeeded && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-500 text-sm text-center"
+              >
+                Something went wrong. Try WhatsApp instead.
+              </motion.p>
+            )}
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-accent text-black hover:bg-opacity-90 transition-colors"
+                disabled={state.submitting}
+                className="px-8 py-3 bg-accent text-black hover:bg-opacity-90 transition-colors disabled:opacity-50 flex items-center gap-2 justify-center"
               >
-                {t('send')}
+                {state.submitting ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>
+                ) : (
+                  t('send')
+                )}
               </button>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || 'YOUR_WHATSAPP_NUMBER'}`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '79002023946'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 border border-accent text-accent hover:bg-accent hover:text-black transition-colors text-center"
@@ -107,6 +113,7 @@ export default function Contact() {
               </a>
             </div>
           </form>
+          )}
         </motion.div>
       </div>
     </section>

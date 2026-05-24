@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import {DM_Serif_Display, DM_Mono} from 'next/font/google';
+import Providers from '@/components/Providers';
 import './globals.css';
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -39,8 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={`${dmSerifDisplay.variable} ${dmMono.variable}`}>
-      <body className="font-mono">{children}</body>
+    <html className={`${dmSerifDisplay.variable} ${dmMono.variable}`} suppressHydrationWarning>
+      <body className="font-mono">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
