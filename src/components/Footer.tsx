@@ -1,21 +1,28 @@
 'use client';
 
 import { Linkedin, Github, MessageCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201064375882';
+const LINKEDIN = 'https://www.linkedin.com/in/mohammed-maher-0074b4412/';
+const GITHUB = 'https://github.com/momaher2004544-prog';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+
   return (
-    <footer className="py-6 px-4 md:px-8 lg:px-12 border-t border-light">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-text-dim font-mono">
-        <p>© 2026 Mohamed Maher</p>
-        <p>Built with Next.js & AI</p>
-        <div className="flex items-center gap-4">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="LinkedIn">
+    <footer className="px-5 md:px-10 lg:px-14 py-8 border-t" style={{ borderColor: 'var(--rule)' }}>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mono-label">
+        <p>{t('rights')}</p>
+        <p className="hidden md:block">{t('setIn')} — {t('built')}</p>
+        <div className="flex items-center gap-5">
+          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--accent)] transition-colors" aria-label="LinkedIn">
             <Linkedin className="w-4 h-4" />
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="GitHub">
+          <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--accent)] transition-colors" aria-label="GitHub">
             <Github className="w-4 h-4" />
           </a>
-          <a href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '79002023946'}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" aria-label="WhatsApp">
+          <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--accent)] transition-colors" aria-label="WhatsApp">
             <MessageCircle className="w-4 h-4" />
           </a>
         </div>

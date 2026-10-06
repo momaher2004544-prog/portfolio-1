@@ -3,16 +3,14 @@ import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
-import CustomCursor from '@/components/CustomCursor';
+import RisoCursor from '@/components/RisoCursor';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
-import Services from '@/components/Services';
-import CaseStudy from '@/components/CaseStudy';
-import CredibilityStrip from '@/components/CredibilityStrip';
+import Work from '@/components/Work';
+import Chapters from '@/components/Chapters';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-
 
 const locales = ['en', 'ar'];
 
@@ -21,20 +19,21 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({params: {locale}}: {params: {locale: string}}) {
+  const base = 'https://mo-1-chi.vercel.app';
   return {
     alternates: {
-      canonical: `https://mo-maher.vercel.app/${locale}`,
+      canonical: `${base}/${locale}`,
       languages: {
-        'x-default': 'https://mo-maher.vercel.app/en',
-        'en': 'https://mo-maher.vercel.app/en',
-        'ar': 'https://mo-maher.vercel.app/ar',
+        'x-default': `${base}/en`,
+        en: `${base}/en`,
+        ar: `${base}/ar`,
       },
     },
   };
 }
 
 export default async function LocaleLayout({
-  params: {locale}
+  params: {locale},
 }: {
   params: {locale: string};
 }) {
@@ -45,20 +44,23 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className={`min-h-screen ${locale === 'ar' ? 'rtl' : ''}`}>
+      <div
+        lang={locale}
+        dir={locale === 'ar' ? 'rtl' : 'ltr'}
+        className="min-h-screen"
+      >
         <ScrollProgressBar />
         <Navbar />
         <main id="main-content">
           <Hero />
           <Stats />
-          <Services />
-          <CaseStudy />
-          <CredibilityStrip />
+          <Work />
+          <Chapters />
           <About />
           <Contact />
         </main>
         <Footer />
-        <CustomCursor />
+        <RisoCursor />
       </div>
     </NextIntlClientProvider>
   );

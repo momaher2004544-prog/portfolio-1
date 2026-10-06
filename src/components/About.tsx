@@ -1,37 +1,54 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Reveal from './Reveal';
+
+interface MetaRow {
+  k: string;
+  v: string;
+}
 
 export default function About() {
   const t = useTranslations('about');
 
+  let meta: MetaRow[] = [];
+  try {
+    meta = t.raw('meta') as MetaRow[];
+  } catch {
+    meta = [];
+  }
+
   return (
-    <section id="about" className="py-20 px-4 md:px-8 lg:px-12">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs font-mono tracking-widest text-accent text-center mb-4">WHO I AM</p>
-          <h2 className="font-display text-4xl md:text-5xl mb-12 text-center">About</h2>
+    <section id="about" className="px-5 md:px-10 lg:px-14 py-16 md:py-24">
+      <Reveal className="flex items-baseline justify-between gap-4 pb-4 border-b" style={{ borderColor: 'var(--rule)' }}>
+        <span className="mono-label">{t('eyebrow')}</span>
+        <span className="mono-label hidden sm:block">Colophon</span>
+      </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="text-sm text-foreground/70 leading-relaxed">
-              <p className="mb-4">
-                {t('en')}
-              </p>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-10 md:pt-16">
+        <Reveal variant="spread" className="lg:col-span-7">
+          <h2 className="display uppercase text-[clamp(3rem,10vw,7rem)] leading-[0.86] tracking-[-0.02em] mb-8">
+            {t('title')}
+          </h2>
+          <p className="display italic text-xl md:text-3xl leading-snug" style={{ color: 'var(--text)' }}>
+            {t('bio')}
+          </p>
+        </Reveal>
 
-            <div className="text-sm text-foreground/70 leading-relaxed" dir="rtl">
-              <p className="mb-4">
-                {t('ar')}
-              </p>
-            </div>
-          </div>
-        </motion.div>
+        <Reveal variant="spread" delay={120} className="lg:col-span-5">
+          <dl className="border-t" style={{ borderColor: 'var(--rule)' }}>
+            {meta.map((row) => (
+              <div
+                key={row.k}
+                className="flex items-baseline justify-between gap-6 py-4 border-b"
+                style={{ borderColor: 'var(--rule)' }}
+              >
+                <dt className="mono-label shrink-0">{row.k}</dt>
+                <dd className="text-sm text-end leading-snug">{row.v}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </section>
   );

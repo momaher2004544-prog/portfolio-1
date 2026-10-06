@@ -1,78 +1,357 @@
 {
-  "hero": {
+  "nav": {
+    "work": "Work",
+    "chapters": "Capabilities",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "runningHead": {
     "name": "Mohamed Maher",
-    "tagline": "Performance marketing & e-commerce — for brands that want results, not impressions.",
-    "taglineAr": "تسويق رقمي وتجارة إلكترونية للعلامات التجارية التي تريد نتائج حقيقية",
+    "edition": "Monograph · Vol. 01 · MMXXVI",
+    "page": "P."
+  },
+  "hero": {
+    "vol": "Vol. 01 / Monograph",
+    "edition": "First edition · Cairo",
+    "years": "MMXXIV — MMXXVI",
+    "line1": "MOHAMED",
+    "line2": "MAHER",
+    "byline": "Shopify · Liquid · Performance · Front-end",
+    "tagline": "Bridging editorial design, custom Liquid engineering, and high-performance e-commerce for brands across Egypt, the Gulf, and beyond.",
+    "isbn": "Cairo · Egypt · MMXXVI",
+    "setIn": "Set in Cormorant Garamond & JetBrains Mono",
     "viewWork": "View Work",
-    "contactMe": "Contact Me",
-    "workedWith": "Worked with clients across Egypt, Europe, and beyond."
+    "contactMe": "Contact",
+    "begin": "↓ Begin reading"
+  },
+  "dividers": {
+    "preface": "Preface",
+    "contents": "Contents",
+    "work": "Selected Work",
+    "chapters": "Capabilities",
+    "colophon": "Colophon"
+  },
+  "manifesto": {
+    "eyebrow": "A note from Cairo",
+    "title": "Building for results,",
+    "titleEm": "not impressions.",
+    "paras": [
+      "This volume collects the work of the last two years: storefronts rebuilt for the Gulf, campaigns tuned to return on ad spend, and interfaces drawn with the discipline of print. The clients arrive with briefs. The briefs ask for traffic, for sales, for something measurable. What follows is the answer to those briefs — set in spreads, with every number verified against a live dashboard rather than a slide deck.",
+      "There is no house style. There are house habits: a preference for the grid over the decoration, for the metric over the vanity, for the slow reveal over the loud announcement. I run my own brand alongside client work, which means the figures on these pages are lived rather than estimated. When a conversion rate doubles, it doubles in my own store first.",
+      "What follows is offered plainly. The work is for brands that want results, and it was never meant for everyone."
+    ],
+    "sig": "Mohamed Maher",
+    "sigLine": "Cairo, Egypt · MMXXVI"
+  },
+  "contents": {
+    "eyebrow": "Five sections, 2024–2026",
+    "title": "Contents",
+    "entries": [
+      {
+        "no": "01 ——",
+        "name": "Preface",
+        "cat": "Manifesto",
+        "target": "preface",
+        "page": "P. 008"
+      },
+      {
+        "no": "02 ——",
+        "name": "Paris Chic UAE",
+        "cat": "Shopify · Custom theme",
+        "target": "work",
+        "page": "P. 024"
+      },
+      {
+        "no": "03 ——",
+        "name": "Paris Chic KSA",
+        "cat": "Market expansion · AI",
+        "target": "work",
+        "page": "P. 056"
+      },
+      {
+        "no": "04 ——",
+        "name": "Roqqei",
+        "cat": "D2C · Performance",
+        "target": "work",
+        "page": "P. 092"
+      },
+      {
+        "no": "05 ——",
+        "name": "Capabilities",
+        "cat": "Index of services",
+        "target": "chapters",
+        "page": "P. 128"
+      }
+    ]
   },
   "stats": {
-    "revenue": "ج.م.1M+ Revenue Driven",
-    "orders": "814 Orders Generated",
-    "roas": "4.2x Average ROAS",
-    "liveBrand": "1 Live Brand Operated",
-    "continents": "Clients Across 3 Continents"
+    "eyebrow": "Figures",
+    "items": [
+      {
+        "value": "1M+",
+        "prefix": "EGP",
+        "count": 0,
+        "label": "Revenue driven"
+      },
+      {
+        "value": "814",
+        "count": 814,
+        "label": "Orders generated"
+      },
+      {
+        "value": "4.2x",
+        "count": 0,
+        "label": "Average ROAS"
+      },
+      {
+        "value": "2",
+        "count": 2,
+        "label": "GCC storefronts shipped"
+      },
+      {
+        "value": "1",
+        "count": 1,
+        "label": "Live brand operated"
+      },
+      {
+        "value": "3",
+        "count": 3,
+        "label": "Continents with clients"
+      }
+    ]
   },
-  "services": {
-    "metaAds": {
-      "title": "Meta Ads",
-      "titleAr": "إعلانات ميتا",
-      "description": "Prospecting and retargeting campaigns for e-commerce and lead generation. Built for ROAS, not vanity metrics."
+  "work": {
+    "eyebrow": "Selected Work",
+    "title": "Spreads",
+    "intro": "Three projects, set as spreads: the brief, the build, the numbers.",
+    "labels": {
+      "category": "Category",
+      "region": "Region",
+      "stack": "Stack",
+      "year": "Year",
+      "note": "Editorial note",
+      "detail": "Details"
     },
-    "googleAdsB2B": {
-      "title": "Google Ads for B2B",
-      "titleAr": "إعلانات جوجل للشركات",
-      "description": "Search and display campaigns targeting decision-makers and high-intent buyers. Not broad audiences — the right people at the right moment."
-    },
-    "shopifyManagement": {
-      "title": "Shopify Management",
-      "titleAr": "إدارة شوبيفاي",
-      "description": "Store setup, conversion optimization, product pages, and automation. Built to sell."
-    },
-    "seo": {
-      "title": "SEO",
-      "titleAr": "تحسين محركات البحث",
-      "description": "Organic growth for long-term traffic. Technical SEO, content strategy, and keyword targeting."
-    },
-    "websiteDevelopment": {
-      "title": "Website Development",
-      "titleAr": "تطوير المواقع",
-      "description": "Clean, fast, conversion-focused websites using React and Next.js."
-    },
-    "codeConsulting": {
-      "title": "Code Consulting",
-      "titleAr": "استشارات برمجية",
-      "description": "Frontend architecture, code review, and technical guidance for non-technical founders."
-    }
+    "projects": [
+      {
+        "index": "01",
+        "title": "Paris Chic UAE",
+        "subtitle": "Luxury eyewear storefront",
+        "chapter": "Chapter 01 — Paris Chic UAE",
+        "pages": "P. 024—055",
+        "plate": "Pl. 01.A",
+        "category": "Shopify · Custom theme",
+        "region": "UAE / GCC",
+        "stack": "Shopify, Liquid, JS, i18n",
+        "year": "2026",
+        "headline": "A regional fashion storefront rebuilt for the Gulf.",
+        "sub": "Every hardcoded string moved into a translation layer — 138 keys across 19 sections, English and Arabic in sync.",
+        "note": "The brief was localization done properly: fluid mobile navigation, fast product discovery, and a store that reads as native in Arabic rather than translated. We audited all seven custom sections, moved every string into a translation layer, unified the button system site-wide, and locked product media to a 4:5 ratio so the grid never shifts.",
+        "pullquote": "A store that reads as native in Arabic, rather than translated into it.",
+        "details": [
+          "Full Arabic localization with a 138-key translation layer, RTL-aware sections",
+          "Unified button system site-wide: primary, secondary, tertiary, hover states",
+          "Trust signals placed directly under Add to Cart — shipping, returns, secure checkout",
+          "Compact header reduced 24%, product media locked to 4:5 with no layout shift",
+          "Per-slide hero text colour scheme, mobile-first story section, accordion menu"
+        ],
+        "figures": [
+          {
+            "v": "138",
+            "l": "Translation keys"
+          },
+          {
+            "v": "19",
+            "l": "Sections synced"
+          },
+          {
+            "v": "24%",
+            "l": "Header reduced"
+          },
+          {
+            "v": "4:5",
+            "l": "Media ratio locked"
+          }
+        ]
+      },
+      {
+        "index": "02",
+        "title": "Paris Chic KSA",
+        "subtitle": "Saudi market fork + Virtual Try-On",
+        "chapter": "Chapter 02 — Paris Chic KSA",
+        "pages": "P. 056—091",
+        "plate": "Pl. 02.A",
+        "category": "Shopify · Market expansion",
+        "region": "KSA",
+        "stack": "Shopify, Liquid, CF Workers, Gemini",
+        "year": "2026",
+        "headline": "One theme, two markets — and an AI try-on built end to end.",
+        "sub": "Currency AED to SAR, market switch to /ar, UAE-only content stripped, and a virtual try-on feature from theme section to encrypted worker secret.",
+        "note": "The UAE theme forked for Saudi Arabia against a 21-section copy spec. We stripped Dubai-specific content, switched currency and locale, rewrote the product and cart pages with Saudi trust signals, and shipped a Virtual Try-On: an RTL-aware Liquid section that composites the frame in-browser, then re-renders it photorealistically through a Cloudflare Worker.",
+        "pullquote": "The customer photo only leaves the browser when they press the button. The API key never leaves the worker.",
+        "details": [
+          "Virtual Try-On: RTL-aware Liquid section, in-browser frame composite, photorealistic re-render via Cloudflare Worker",
+          "Customer photo only sent on explicit action; API key held as an encrypted Worker secret",
+          "Market switch AED → SAR, language switcher /ar-ae → /ar, Saudi product page trust trio",
+          "Saudi copy pass across hero, FAQ, cart and product page — 1,039 lines added",
+          "Compliance tracked against the client copy spec with a gap analysis document"
+        ],
+        "figures": [
+          {
+            "v": "21",
+            "l": "Sections in spec"
+          },
+          {
+            "v": "1,039",
+            "l": "Lines of copy"
+          },
+          {
+            "v": "AED→SAR",
+            "l": "Market switch"
+          },
+          {
+            "v": "1",
+            "l": "AI feature shipped"
+          }
+        ]
+      },
+      {
+        "index": "03",
+        "title": "Roqqei",
+        "subtitle": "Egyptian women's fashion — owned & operated",
+        "chapter": "Chapter 03 — Roqqei",
+        "pages": "P. 092—127",
+        "plate": "Pl. 03.A",
+        "category": "D2C · Performance marketing",
+        "region": "Egypt",
+        "stack": "Shopify, Meta Ads, CRO",
+        "year": "2024 — now",
+        "headline": "My own brand, audited, rebuilt, and scaled.",
+        "sub": "Store audit, product pages rebuilt, prospecting and retargeting launched, checkout optimized, conversion tracking installed. Every number verified.",
+        "note": "Roqqei is the proof of work that cannot be borrowed: a live Egyptian fashion brand I own and operate. The store opened at a 0.49% conversion rate with no structured campaigns. We rebuilt the product pages, restructured the Meta account into prospecting and retargeting, and instrumented conversion tracking end to end.",
+        "pullquote": "When a conversion rate doubles, it doubles in my own store first.",
+        "details": [
+          "Conversion rate lifted from 0.49% to over 1%",
+          "4.2x average ROAS, CPA as low as EGP 42 per purchase",
+          "EGP 1M+ revenue and 814 orders generated",
+          "Structured Meta Ads account: prospecting, retargeting, conversion tracking"
+        ],
+        "figures": [
+          {
+            "v": "1M+",
+            "l": "EGP revenue"
+          },
+          {
+            "v": "4.2x",
+            "l": "Average ROAS"
+          },
+          {
+            "v": "814",
+            "l": "Orders"
+          },
+          {
+            "v": "0.49→1%+",
+            "l": "Conversion rate"
+          }
+        ]
+      }
+    ]
   },
-  "caseStudy": {
-    "title": "Case Study: Roqqei",
-    "subtitle": "رُقيّ — Egyptian Women's Fashion Brand",
-    "problem": "Problem",
-    "whatIDid": "What I Did",
-    "results": "Results",
-    "timeline": "Timeline",
-    "storeAudit": "Store Audit",
-    "metaLaunch": "Meta Ads Launch",
-    "scaling": "Scaling",
-    "note": "This is a live brand I own and operate — every number is real."
-  },
-  "credibility": {
-    "title": "Worked with businesses across Egypt, the Middle East, Europe, and beyond."
+  "chapters": {
+    "eyebrow": "Capabilities",
+    "title": "Index",
+    "intro": "What I do, set like a book index.",
+    "items": [
+      {
+        "no": "01",
+        "title": "Shopify & E-commerce Systems",
+        "cat": "Liquid · Metafields · CRO",
+        "body": "Designing and building high-converting storefronts for the MENA region. Custom Liquid theme development, metafield and metaobject architecture, AJAX cart flows, and mobile checkout optimization.",
+        "tags": "Liquid · Metafields · CRO · Checkout",
+        "page": "P. 130"
+      },
+      {
+        "no": "02",
+        "title": "Performance Marketing",
+        "cat": "Meta · Google · Tracking",
+        "body": "Meta and Google campaigns built for ROAS, not vanity metrics. Prospecting and retargeting for e-commerce, search and display for B2B, with conversion tracking wired end to end.",
+        "tags": "Meta Ads · Google Ads · Tracking",
+        "page": "P. 136"
+      },
+      {
+        "no": "03",
+        "title": "Front-end Engineering",
+        "cat": "React · Next.js · TypeScript",
+        "body": "Interactive web experiences with React, Next.js, and TypeScript. Kinetic typography, fluid animation, API integration, and clean component architecture.",
+        "tags": "React · Next.js · TypeScript",
+        "page": "P. 142"
+      },
+      {
+        "no": "04",
+        "title": "International Shopify",
+        "cat": "Multi-market · EN/AR · AI",
+        "body": "Multi-market builds for brands expanding across the Gulf and beyond: localized storefronts, currency and locale switching, bilingual EN/AR content, and AI features such as virtual try-on.",
+        "tags": "Multi-market · EN/AR · AI features",
+        "status": "Now booking",
+        "page": "P. 148"
+      }
+    ]
   },
   "about": {
-    "en": "Cairo-based digital marketer and e-commerce specialist. Self-taught frontend developer with React and Next.js experience. Background in Meta Ads, Google Ads, Shopify, and SEO. Building a freelance practice focused on performance marketing for e-commerce and B2B businesses. Worked with clients locally and internationally. Honest, no fluff.",
-    "ar": "مسوق رقمي ومتخصص في التجارة الإلكترونية مقيم في القاهرة. مطور أمامي ذاتي التعلم مع خبرة في React و Next.js. خلفية في إعلانات ميتا، إعلانات جوجل، شوبيفاي، وتحسين محركات البحث. أسس ممارسة مستقلة مركزة على التسويق القائم على الأداء للتجارة الإلكترونية والشركات B2B. عمل مع عملاء محليين ودوليين. صادق، بدون تكلف."
+    "eyebrow": "Colophon",
+    "title": "About",
+    "bio": "I treat web development like print design: rigid grids, intentional typography, and uncompromising speed. Based in Egypt, I build custom digital experiences and Shopify stores for brands across the region — and I run my own, so the numbers on this page are lived, not estimated.",
+    "meta": [
+      {
+        "k": "Based",
+        "v": "Cairo, Egypt"
+      },
+      {
+        "k": "Focus",
+        "v": "Shopify, performance marketing, front-end"
+      },
+      {
+        "k": "Stack",
+        "v": "Liquid, React, Next.js, TypeScript"
+      },
+      {
+        "k": "Languages",
+        "v": "Arabic, English"
+      },
+      {
+        "k": "Working with",
+        "v": "Egypt · Middle East · Europe · Global"
+      },
+      {
+        "k": "Status",
+        "v": "Open to selected projects"
+      }
+    ]
   },
   "contact": {
+    "eyebrow": "Colophon",
+    "pre": "— Open to selected commissions —",
     "headline": "Working with the right clients, not every client.",
-    "subline": "If you need results-driven marketing — let's talk.",
+    "subline": "If you need results-driven marketing or a store that sells — let's talk.",
     "name": "Name",
     "email": "Email",
     "company": "Company Name",
     "message": "Message",
     "send": "Send Message",
-    "whatsapp": "WhatsApp Me"
-  }
+    "whatsapp": "WhatsApp",
+    "sent": "Message sent. Mo will reply within 24 hours.",
+    "error": "Something went wrong. Try WhatsApp instead.",
+    "whatsapp_label": "WhatsApp",
+    "linkedin_label": "LinkedIn",
+    "location_label": "Location",
+    "location": "Cairo, Egypt — remote worldwide",
+    "colophon": "This monograph is set in Cormorant Garamond by Christian Thalmann and Inter by Rasmus Andersson, with JetBrains Mono for page furniture. Built in Next.js with Tailwind CSS and Framer Motion, in Cairo. The gold appearing throughout is a single accent, held constant across both the English and Arabic editions.",
+    "end": "— End · Monograph Vol. 01 · Mohamed Maher · MMXXVI —"
+  },
+  "footer": {
+    "setIn": "Set in Cormorant & JetBrains Mono",
+    "built": "Built with Next.js",
+    "rights": "© 2026 Mohamed Maher"
+  },
+  "stats_legacy_note": "Figures verified against live store dashboards."
 }

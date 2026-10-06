@@ -1,180 +1,138 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Send } from 'lucide-react';
 
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
+const MOTIONS = [
+  { y: -120, opacity: 0, rotate: -8, x: 0, scale: 1 },
+  { y: 120, opacity: 0, rotate: 6, x: 0, scale: 1 },
+  { y: 0, opacity: 0, rotate: -4, x: -100, scale: 1 },
+  { y: 0, opacity: 0, rotate: 5, x: 100, scale: 1 },
+  { y: 0, opacity: 0, rotate: 180, x: 0, scale: 0 },
+  { y: -80, opacity: 0, rotate: 12, x: 0, scale: 1 },
+];
+
+const REST = { y: 0, opacity: 1, rotate: 0, x: 0, scale: 1 };
+
+function KineticLine({ text, seed, className }: { text: string; seed: number; className?: string }) {
+  return (
+    <span className={className}>
+      {text.split('').map((letter, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          initial={MOTIONS[(i + seed) % MOTIONS.length]}
+          animate={REST}
+          transition={{
+            duration: 1.4,
+            delay: 0.3 + (i + seed) * 0.07,
+            ease: [0.19, 1, 0.22, 1],
+          }}
+        >
+          {letter === ' ' ? ' ' : letter}
+        </motion.span>
+      ))}
+    </span>
+  );
 }
 
 export default function Hero() {
   const t = useTranslations('hero');
-  const name = t('name');
-  const tagline = t('tagline');
-  const taglineAr = t('taglineAr');
-
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hey — I'm Mo's assistant. What's your business working on right now?" }
-  ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-
-    const userMessage: Message = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [
-            ...messages,
-            userMessage
-          ]
-        })
-      });
-
-      const data = await response.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I hit an error. Please try again or use the contact form.' }]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
-    <section id="work" className="min-h-screen flex items-center px-4 md:px-8 lg:px-12">
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-        {/* LEFT COLUMN */}
-          <motion.div
-            className="lg:col-span-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-7xl xl:text-8xl mb-6 leading-tight">
-              {name.split('').map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 1, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.1, delay: index * 0.04 }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </h1>
+    <section id="hero" className="relative min-h-screen flex flex-col justify-between px-6 md:px-10 pt-24 pb-8 z-[3]">
+      {/* meta top */}
+      <motion.div
+        className="flex justify-between items-center mono-label"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 1, delay: 1.8 }}
+      >
+        <span>{t('vol')}</span>
+        <span className="hidden md:block">{t('edition')}</span>
+        <span style={{ color: 'var(--gold)', opacity: 1 }}>{t('years')}</span>
+      </motion.div>
 
-          <motion.div
-            className="space-y-3 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+      {/* name treatment */}
+      <div className="flex-1 flex flex-col justify-center items-center py-16 text-center">
+        <h1 className="display uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3.5rem,15vw,15rem)] font-bold perspective-[800px]">
+          <span className="block text-[color:var(--ivory)]">
+            <KineticLine text={t('line1')} seed={0} />
+          </span>
+          <span
+            className="block italic font-medium"
+            style={{ color: 'var(--gold)' }}
           >
-            <h2 className="text-base sm:text-lg md:text-xl font-mono accent-text">{tagline}</h2>
-            <h2 className="text-sm sm:text-base md:text-lg font-mono text-text-muted">{taglineAr}</h2>
-          </motion.div>
+            <KineticLine text={t('line2')} seed={4} />
+          </span>
+        </h1>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-3 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+        <motion.div
+          className="mt-10 flex items-center justify-center gap-6 flex-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="inline-block w-12 h-px" style={{ background: 'var(--gold)' }} />
+          <span
+            className="text-[12px] font-medium uppercase"
+            style={{ letterSpacing: '0.3em', color: 'rgba(20,19,14,0.7)' }}
           >
-            <button className="px-6 py-3 border border-accent text-accent hover:bg-accent hover:text-black transition-colors text-sm font-mono" aria-label={t('viewWork')}>
-              {t('viewWork')}
-            </button>
-            <button className="px-6 py-3 bg-accent text-black hover:bg-opacity-90 transition-colors text-sm font-mono" aria-label={t('contactMe')}>
-              {t('contactMe')}
-            </button>
-          </motion.div>
-
-          <motion.p
-            className="text-xs sm:text-sm text-text-dim font-mono"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-          >
-            {t('workedWith')}
-          </motion.p>
+            {t('byline')}
+          </span>
+          <span className="inline-block w-12 h-px" style={{ background: 'var(--gold)' }} />
         </motion.div>
 
-        {/* RIGHT COLUMN — embedded chat */}
-        <motion.div
-          className="lg:col-span-2 w-full"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <motion.p
+          className="mt-8 max-w-2xl text-[15px] leading-relaxed px-2"
+          style={{ color: 'rgba(20,19,14,0.65)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.7 }}
         >
-          <div
-            style={{ border: '1px solid var(--border)', borderRadius: '16px', padding: '20px' }}
-            className="bg-background flex flex-col h-[420px]"
+          {t('tagline')}
+        </motion.p>
+
+        <motion.div
+          className="mt-10 flex flex-wrap gap-4 justify-center"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <button
+            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+            className="mono-label px-7 py-3 border transition-colors hover:bg-[color:var(--gold)] hover:text-[color:var(--jungle-deep)]"
+            style={{ borderColor: 'var(--gold)', color: 'var(--gold)', opacity: 1, pointerEvents: 'auto' }}
           >
-            {/* Header */}
-            <div className="flex items-center gap-2 pb-3 border-b border-border mb-3">
-              <span className="w-2 h-2 bg-green-500 rounded-full inline-block" />
-              <span className="text-xs font-mono text-accent tracking-wider">MO'S ASSISTANT</span>
-            </div>
-
-            {/* Messages area */}
-            <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin">
-              {messages.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`p-3 rounded-xl text-sm leading-relaxed ${
-                    msg.role === 'user'
-                      ? 'bg-accent/20 text-foreground ml-6'
-                      : 'bg-card text-foreground/80 mr-6'
-                  }`}
-                >
-                  {msg.content}
-                </div>
-              ))}
-              {isLoading && (
-                <div className="bg-card text-foreground/80 p-3 rounded-xl text-sm mr-6">
-                  Thinking...
-                </div>
-              )}
-              <div ref={chatEndRef} />
-            </div>
-
-            {/* Input */}
-            <div className="flex gap-2 pt-3 border-t border-border mt-3">
-              <label htmlFor="hero-chat-input" className="sr-only">Ask me anything</label>
-              <input
-                id="hero-chat-input"
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                placeholder="Ask me anything..."
-                className="flex-1 bg-transparent border border-border rounded-xl px-4 py-3 text-sm font-mono text-foreground outline-none focus:border-accent transition-colors placeholder:text-text-dim"
-              />
-              <button
-                onClick={sendMessage}
-                className="bg-accent text-black p-3 rounded-xl hover:bg-opacity-90 transition-colors flex-shrink-0"
-                aria-label="Send message"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+            {t('viewWork')}
+          </button>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="mono-label px-7 py-3 transition-colors hover:opacity-90"
+            style={{ background: 'var(--gold)', color: 'var(--jungle-deep)', opacity: 1, pointerEvents: 'auto' }}
+          >
+            {t('contactMe')}
+          </button>
         </motion.div>
       </div>
+
+      {/* meta bottom */}
+      <motion.div
+        className="flex justify-between items-center mono-label"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 1, delay: 1.9 }}
+      >
+        <span className="hidden md:block">{t('isbn')}</span>
+        <button
+          className="scroll-cue"
+          style={{ color: 'var(--gold)', animation: 'nudge 2.4s cubic-bezier(.22,1,.36,1) infinite' }}
+          onClick={() => document.getElementById('preface')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          {t('begin')}
+        </button>
+        <span className="hidden md:block">{t('setIn')}</span>
+      </motion.div>
     </section>
   );
 }

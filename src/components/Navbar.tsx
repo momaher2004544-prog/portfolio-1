@@ -4,16 +4,18 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
+import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
-const sections = [
-  { id: 'work', label: 'Work' },
-  { id: 'services', label: 'Services' },
-  { id: 'case-study', label: 'Case Study' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' },
-];
+const sectionIds = ['work', 'chapters', 'about', 'contact'] as const;
 
 export default function Navbar() {
+  const t = useTranslations('nav');
+  const params = useParams<{ locale: string }>();
+  const locale = params?.locale ?? 'en';
+  const otherLocale = locale === 'ar' ? 'en' : 'ar';
+  const otherLabel = locale === 'ar' ? 'EN' : 'ع';
+
   const [active, setActive] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -25,13 +27,15 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const offsets = sections.map(s => {
-        const el = document.getElementById(s.id);
-        return { id: s.id, top: el?.getBoundingClientRect().top ?? Infinity };
+      const current = sectionIds.find((id) => {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const top = el.getBoundingClientRect().top;
+        return top > 0 && top < 300;
       });
-      const current = offsets.find(o => o.top > 0 && o.top < 300);
-      if (current) setActive(current.id);
+      setActive(current ?? '');
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -41,45 +45,66 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  const label = (id: string) => {
+    switch (id) {
+      case 'work':
+        return t('work');
+      case 'chapters':
+        return t('chapters');
+      case 'about':
+        return t('about');
+      default:
+        return t('contact');
+    }
+  };
+
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 lg:px-12 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 px-5 md:px-10 lg:px-14 transition-all duration-300"
         style={{
-          background: scrolled ? 'var(--navbar-bg, rgba(14,14,13,0.8))' : 'transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+          background: scrolled ? 'var(--navbar-bg)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
           borderBottom: scrolled ? '1px solid var(--border-light)' : '1px solid transparent',
         }}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display text-xl text-accent tracking-wide"
+            className="mono-label hover:text-[color:var(--accent)] transition-colors"
             aria-label="Home"
           >
-            MM
+            MM — Monograph
           </button>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {sections.map(s => (
+          <div className="hidden md:flex items-center gap-7">
+            {sectionIds.map((id) => (
               <button
-                key={s.id}
-                onClick={() => scrollTo(s.id)}
-                className={`text-xs font-mono tracking-wider uppercase transition-colors ${
-                  active === s.id ? 'text-accent' : 'text-text-muted hover:text-foreground'
+                key={id}
+                onClick={() => scrollTo(id)}
+                className={`mono-label transition-colors ${
+                  active === id ? 'text-[color:var(--accent)]' : 'hover:text-[color:var(--text)]'
                 }`}
               >
-                {s.label}
+                {label(id)}
               </button>
             ))}
 
-            {/* Theme toggle */}
+            <a
+              href={`/${otherLocale}`}
+              className="mono-label px-2 py-1 border transition-colors hover:text-[color:var(--accent)]"
+              style={{ borderColor: 'var(--border)' }}
+              aria-label="Switch language"
+            >
+              {otherLabel}
+            </a>
+
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-text-muted hover:text-accent transition-colors ml-4"
+                className="mono-label hover:text-[color:var(--accent)] transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -87,29 +112,32 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile hamburger + theme */}
+          {/* Mobile */}
           <div className="flex md:hidden items-center gap-3">
+            <a
+              href={`/${otherLocale}`}
+              className="mono-label px-2 py-1 border"
+              style={{ borderColor: 'var(--border)' }}
+              aria-label="Switch language"
+            >
+              {otherLabel}
+            </a>
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-text-muted hover:text-accent transition-colors"
+                className="mono-label"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
             )}
-            <button
-              className="text-foreground"
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-            >
+            <button className="text-[color:var(--text)]" onClick={() => setMenuOpen(true)} aria-label="Open menu">
               <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile slide-in menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -120,7 +148,8 @@ export default function Navbar() {
           >
             <div className="flex-1 bg-black/50" onClick={() => setMenuOpen(false)} />
             <motion.div
-              className="w-64 bg-background border-l border-border p-8 flex flex-col gap-6"
+              className="w-64 p-8 flex flex-col gap-6 border-s"
+              style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -128,18 +157,18 @@ export default function Navbar() {
             >
               <div className="flex justify-end">
                 <button onClick={() => setMenuOpen(false)} aria-label="Close menu">
-                  <X className="w-5 h-5 text-foreground" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
-              {sections.map(s => (
+              {sectionIds.map((id) => (
                 <button
-                  key={s.id}
-                  onClick={() => scrollTo(s.id)}
-                  className={`text-sm font-mono tracking-wider uppercase text-left ${
-                    active === s.id ? 'text-accent' : 'text-text-muted'
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className={`mono-label text-start ${
+                    active === id ? 'text-[color:var(--accent)]' : ''
                   }`}
                 >
-                  {s.label}
+                  {label(id)}
                 </button>
               ))}
             </motion.div>
