@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const MOTIONS = [
   { y: -120, opacity: 0, rotate: -8, x: 0, scale: 1 },
@@ -15,9 +15,13 @@ const MOTIONS = [
 const REST = { y: 0, opacity: 1, rotate: 0, x: 0, scale: 1 };
 
 function KineticLine({ text, seed, className }: { text: string; seed: number; className?: string }) {
+  // Arabic must stay shaped/joined: split by word, never by letter.
+  const isArabic = /[\u0600-\u06FF]/.test(text);
+  const segments = isArabic ? text.split(/(\s+)/) : text.split('');
+
   return (
     <span className={className}>
-      {text.split('').map((letter, i) => (
+      {segments.map((letter, i) => (
         <motion.span
           key={i}
           className="inline-block"
@@ -38,6 +42,8 @@ function KineticLine({ text, seed, className }: { text: string; seed: number; cl
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-between px-6 md:px-10 pt-24 pb-8 z-[3]">
@@ -54,13 +60,28 @@ export default function Hero() {
 
       {/* name treatment */}
       <div className="flex-1 flex flex-col justify-center items-center py-16 text-center">
-        <h1 className="display uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3.5rem,15vw,15rem)] font-bold perspective-[800px]">
-          <span className="block text-[color:var(--ivory)]">
+        <h1
+          className="display text-[clamp(3.5rem,15vw,15rem)] font-bold perspective-[800px]"
+          style={
+            isRTL
+              ? { lineHeight: 1.08, letterSpacing: 0 }
+              : { lineHeight: 0.85, letterSpacing: '-0.04em', textTransform: 'uppercase' }
+          }
+        >
+          <span
+            className="block text-[color:var(--ivory)]"
+            style={isRTL ? { fontFamily: 'var(--font-amiri)' } : undefined}
+          >
             <KineticLine text={t('line1')} seed={0} />
           </span>
           <span
-            className="block italic font-medium"
-            style={{ color: 'var(--gold)' }}
+            className="block font-medium"
+            style={{
+              color: 'var(--gold)',
+              ...(isRTL
+                ? { fontFamily: 'var(--font-amiri)' }
+                : { fontStyle: 'italic' }),
+            }}
           >
             <KineticLine text={t('line2')} seed={4} />
           </span>
@@ -74,8 +95,13 @@ export default function Hero() {
         >
           <span className="inline-block w-12 h-px" style={{ background: 'var(--gold)' }} />
           <span
-            className="text-[12px] font-medium uppercase"
-            style={{ letterSpacing: '0.3em', color: 'rgba(20,19,14,0.7)' }}
+            className="text-[12px] font-medium"
+            style={{
+              color: 'rgba(20,19,14,0.7)',
+              ...(isRTL
+                ? { fontFamily: 'var(--font-noto-ar)', fontSize: 13 }
+                : { textTransform: 'uppercase', letterSpacing: '0.3em' }),
+            }}
           >
             {t('byline')}
           </span>

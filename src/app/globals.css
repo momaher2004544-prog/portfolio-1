@@ -348,3 +348,23 @@ body::after {
 .scrollbar-thin::-webkit-scrollbar-thumb {
   background: rgba(20, 19, 14, 0.25);
 }
+
+/* ── RTL: Arabic must not inherit Latin tracking/italic/uppercase ── */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .mono-label {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--font-noto-ar), var(--font-body);
+}
+[dir="rtl"] .eyebrow { font-size: 12px; }
+[dir="rtl"] .mono-label { font-size: 11px; }
+[dir="rtl"] .display {
+  letter-spacing: 0;
+  line-height: 1.15;
+  font-family: var(--font-amiri), var(--font-display);
+}
+[dir="rtl"] .field {
+  letter-spacing: 0;
+  font-family: var(--font-noto-ar), var(--font-body);
+  text-align: right;
+}
