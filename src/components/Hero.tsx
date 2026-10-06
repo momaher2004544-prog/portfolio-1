@@ -48,7 +48,6 @@ export default function Hero() {
         animate={{ opacity: 0.6 }}
         transition={{ duration: 1, delay: 1.8 }}
       >
-        <span>{t('vol')}</span>
         <span className="hidden md:block">{t('edition')}</span>
         <span style={{ color: 'var(--gold)', opacity: 1 }}>{t('years')}</span>
       </motion.div>

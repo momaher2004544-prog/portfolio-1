@@ -75,7 +75,7 @@ export default function Navbar() {
             className="mono-label hover:text-[color:var(--accent)] transition-colors"
             aria-label="Home"
           >
-            MM — Monograph
+            <span className="sr-only">Mohamed Maher</span>
           </button>
 
           {/* Desktop links */}
