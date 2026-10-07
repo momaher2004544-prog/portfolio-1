@@ -44,7 +44,7 @@
     "sigLine": "Cairo, Egypt · MMXXVI"
   },
   "contents": {
-    "eyebrow": "Six sections, 2024–2026",
+    "eyebrow": "Seven sections, 2024–2026",
     "title": "Contents",
     "entries": [
       {
@@ -77,13 +77,20 @@
       },
       {
         "no": "05 ——",
-        "name": "Roqqei",
-        "cat": "D2C · Performance",
+        "name": "BurgerBite",
+        "cat": "One-page site · Local business",
         "target": "work",
         "page": "P. 112"
       },
       {
         "no": "06 ——",
+        "name": "Roqqei",
+        "cat": "D2C · Performance",
+        "target": "work",
+        "page": "P. 120"
+      },
+      {
+        "no": "07 ——",
         "name": "Capabilities",
         "cat": "Index of services",
         "target": "chapters",
@@ -130,14 +137,17 @@
   "work": {
     "eyebrow": "Selected Work",
     "title": "Spreads",
-    "intro": "Four projects, set as spreads: the brief, the build, the numbers.",
+    "intro": "Five projects, set as spreads: the brief, the build, the numbers.",
     "labels": {
       "category": "Category",
       "region": "Region",
       "stack": "Stack",
       "year": "Year",
       "note": "Editorial note",
-      "detail": "Details"
+      "detail": "Details",
+      "live": "Live site",
+      "view": "Tap to open ↗",
+      "visit": "Open in new tab"
     },
     "projects": [
       {
@@ -265,11 +275,53 @@
       },
       {
         "index": "04",
+        "title": "BurgerBite",
+        "subtitle": "Restaurant site with WhatsApp ordering",
+        "chapter": "Chapter 04 — BurgerBite",
+        "pages": "P. 112—119",
+        "plate": "Pl. 04.A",
+        "category": "One-page site · Local business",
+        "region": "Egypt",
+        "stack": "Next.js, Tailwind, Vercel",
+        "year": "2026",
+        "url": "https://burgerbit.vercel.app/",
+        "headline": "A local burger joint, online in two days.",
+        "sub": "Full menu with EGP prices, WhatsApp ordering, click-to-call and the Google rating — one Arabic-first page, live in days.",
+        "note": "Small restaurants do not need a 40-page store; they need one fast page that turns a Google search into a WhatsApp order. We put the full menu with prices, a one-tap order button, phone, map, the 4.7 Google rating and customer quotes above the fold — and went from brief to live in two days.",
+        "pullquote": "For a restaurant, the homepage is not a brochure — it is the till.",
+        "details": [
+          "Arabic-first RTL one-pager: full menu by category with EGP pricing",
+          "Order flow funneled to WhatsApp; tap-to-call from every screen",
+          "Trust above the fold: 4.7 Google rating, 500+ monthly orders, testimonials",
+          "Static build on Vercel — loads fast on Egyptian mobile networks",
+          "Brief to live site in two days"
+        ],
+        "figures": [
+          {
+            "v": "2",
+            "l": "Days to launch"
+          },
+          {
+            "v": "4.7",
+            "l": "Google rating shown"
+          },
+          {
+            "v": "500+",
+            "l": "Orders per month"
+          },
+          {
+            "v": "1",
+            "l": "Page to order"
+          }
+        ]
+      },
+      {
+        "index": "05",
         "title": "Roqqei",
         "subtitle": "Egyptian women's fashion — built & scaled",
-        "chapter": "Chapter 04 — Roqqei",
-        "pages": "P. 112—127",
-        "plate": "Pl. 04.A",
+        "chapter": "Chapter 05 — Roqqei",
+        "pages": "P. 120—127",
+        "plate": "Pl. 05.A",
         "category": "D2C · Performance marketing",
         "region": "Egypt",
         "stack": "Shopify, Meta Ads, CRO",
