@@ -15,6 +15,7 @@ interface Project {
   note: string;
   details: string[];
   url?: string;
+  embed?: boolean;
   pullquote?: string;
 }
 
@@ -134,7 +135,13 @@ export default function Work() {
                 {p.url ? (
                   <button
                     type="button"
-                    onClick={() => setPreview(p)}
+                    onClick={() => {
+                      if (p.embed === false) {
+                        window.open(p.url, '_blank', 'noopener,noreferrer');
+                      } else {
+                        setPreview(p);
+                      }
+                    }}
                     className="border w-full h-full min-h-[280px] flex flex-col justify-between p-6 md:p-8 text-left transition-colors hover:border-[color:var(--accent)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--accent)]"
                     style={{ borderColor: 'var(--border)', background: 'var(--card)' }}
                   >
