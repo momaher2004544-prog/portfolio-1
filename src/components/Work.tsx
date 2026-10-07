@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Reveal from './Reveal';
 
@@ -21,7 +20,6 @@ interface Project {
 
 export default function Work() {
   const t = useTranslations('work');
-  const [preview, setPreview] = useState<Project | null>(null);
 
   let projects: Project[] = [];
   try {
@@ -30,18 +28,10 @@ export default function Work() {
     projects = [];
   }
 
-  useEffect(() => {
-    if (!preview) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setPreview(null);
-    };
-    window.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [preview]);
+  const frameSrc = (p: Project) =>
+    p.embed === false
+      ? `/api/preview?u=${encodeURIComponent(p.url!)}`
+      : p.url!;
 
   return (
     <section id="work" className="px-5 md:px-10 lg:px-14 py-16 md:py-24">
@@ -130,35 +120,36 @@ export default function Work() {
                 </div>
               </div>
 
-              {/* RIGHT — tap-to-open live site / pull-quote plate */}
+              {/* RIGHT — live site, loaded directly in the page */}
               <div className="lg:col-span-5">
                 {p.url ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (p.embed === false) {
-                        window.open(p.url, '_blank', 'noopener,noreferrer');
-                      } else {
-                        setPreview(p);
-                      }
-                    }}
-                    className="border w-full h-full min-h-[280px] flex flex-col justify-between p-6 md:p-8 text-left transition-colors hover:border-[color:var(--accent)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--accent)]"
+                  <div
+                    className="border h-full flex flex-col overflow-hidden"
                     style={{ borderColor: 'var(--border)', background: 'var(--card)' }}
                   >
-                    <div className="flex items-baseline justify-between">
-                      <span className="mono-label">{t('labels.live')}</span>
-                      <span className="mono-label text-[color:var(--accent)]">↗</span>
-                    </div>
-                    <div className="py-6">
-                      <p className="display text-[clamp(1.8rem,3vw,2.6rem)] leading-none mb-3">{p.title}</p>
-                      <p className="mono-label break-all" style={{ color: 'var(--text-muted)' }}>
+                    <div className="flex items-baseline justify-between gap-3 px-5 py-3 border-b shrink-0" style={{ borderColor: 'var(--rule)' }}>
+                      <span className="mono-label truncate">
+                        <span className="text-[color:var(--accent)]">{t('labels.live')}</span>
+                        {' · '}
                         {p.url.replace(/^https?:\/\//, '')}
-                      </p>
+                      </span>
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mono-label shrink-0 underline underline-offset-4 hover:text-[color:var(--accent)]"
+                      >
+                        {t('labels.visit')} ↗
+                      </a>
                     </div>
-                    <div className="pt-4 border-t mono-label" style={{ borderColor: 'var(--rule)' }}>
-                      {t('labels.view')}
-                    </div>
-                  </button>
+                    <iframe
+                      src={frameSrc(p)}
+                      title={p.title}
+                      loading="lazy"
+                      className="flex-1 w-full border-0 min-h-[460px]"
+                      style={{ background: '#fff' }}
+                    />
+                  </div>
                 ) : (
                   <figure className="border h-full min-h-[280px] flex flex-col justify-between p-6 md:p-8" style={{ borderColor: 'var(--border)', background: 'var(--card)' }}>
                     <span className="mono-label">{p.index} / {p.title} · {p.year}</span>
@@ -179,50 +170,6 @@ export default function Work() {
           </Reveal>
         ))}
       </div>
-
-      {/* LIVE SITE POPUP */}
-      {preview && preview.url && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-8" role="dialog" aria-modal="true" aria-label={preview.title}>
-          <div
-            className="absolute inset-0"
-            style={{ background: 'rgba(14,13,11,0.75)', backdropFilter: 'blur(6px)' }}
-            onClick={() => setPreview(null)}
-          />
-          <div
-            className="relative w-full max-w-5xl h-[85vh] md:h-[80vh] border flex flex-col overflow-hidden"
-            style={{ borderColor: 'var(--border)', background: 'var(--card)' }}
-          >
-            <div className="flex items-center justify-between gap-4 px-4 py-3 border-b shrink-0" style={{ borderColor: 'var(--rule)' }}>
-              <span className="mono-label truncate">{preview.url}</span>
-              <div className="flex items-center gap-5 shrink-0">
-                <a
-                  href={preview.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mono-label underline underline-offset-4 hover:text-[color:var(--accent)]"
-                >
-                  {t('labels.visit')}
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setPreview(null)}
-                  aria-label="Close"
-                  className="mono-label hover:text-[color:var(--accent)]"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-            <iframe
-              src={preview.url}
-              title={preview.title}
-              className="flex-1 w-full border-0"
-              style={{ background: '#fff' }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }
