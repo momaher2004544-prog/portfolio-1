@@ -37,14 +37,14 @@
     "titleEm": "not impressions.",
     "paras": [
       "This volume collects the work of the last two years: storefronts rebuilt for the Gulf, campaigns tuned to return on ad spend, and interfaces drawn with the discipline of print. The clients arrive with briefs. The briefs ask for traffic, for sales, for something measurable. What follows is the answer to those briefs — set in spreads, with every number verified against a live dashboard rather than a slide deck.",
-      "There is no house style. There are house habits: a preference for the grid over the decoration, for the metric over the vanity, for the slow reveal over the loud announcement. I run my own brand alongside client work, which means the figures on these pages are lived rather than estimated. When a conversion rate doubles, it doubles in my own store first.",
+      "There is no house style. There are house habits: a preference for the grid over the decoration, for the metric over the vanity, for the slow reveal over the loud announcement. I stay on the accounts after launch, which means the figures on these pages are lived rather than estimated. When a conversion rate doubles, it doubles on a dashboard I can point to.",
       "What follows is offered plainly. The work is for brands that want results, and it was never meant for everyone."
     ],
     "sig": "Mohamed Maher",
     "sigLine": "Cairo, Egypt · MMXXVI"
   },
   "contents": {
-    "eyebrow": "Five sections, 2024–2026",
+    "eyebrow": "Six sections, 2024–2026",
     "title": "Contents",
     "entries": [
       {
@@ -70,13 +70,20 @@
       },
       {
         "no": "04 ——",
-        "name": "Roqqei",
-        "cat": "D2C · Performance",
+        "name": "GTV Egypt",
+        "cat": "Next.js · B2B commerce",
         "target": "work",
         "page": "P. 092"
       },
       {
         "no": "05 ——",
+        "name": "Roqqei",
+        "cat": "D2C · Performance",
+        "target": "work",
+        "page": "P. 112"
+      },
+      {
+        "no": "06 ——",
         "name": "Capabilities",
         "cat": "Index of services",
         "target": "chapters",
@@ -111,7 +118,7 @@
       {
         "value": "1",
         "count": 1,
-        "label": "Live brand operated"
+        "label": "Live store built"
       },
       {
         "value": "3",
@@ -123,7 +130,7 @@
   "work": {
     "eyebrow": "Selected Work",
     "title": "Spreads",
-    "intro": "Three projects, set as spreads: the brief, the build, the numbers.",
+    "intro": "Four projects, set as spreads: the brief, the build, the numbers.",
     "labels": {
       "category": "Category",
       "region": "Region",
@@ -217,19 +224,60 @@
       },
       {
         "index": "03",
-        "title": "Roqqei",
-        "subtitle": "Egyptian women's fashion — owned & operated",
-        "chapter": "Chapter 03 — Roqqei",
-        "pages": "P. 092—127",
+        "title": "GTV Egypt",
+        "subtitle": "B2B fittings storefront + AI sales agent",
+        "chapter": "Chapter 03 — GTV Egypt",
+        "pages": "P. 092—111",
         "plate": "Pl. 03.A",
+        "category": "Next.js · B2B commerce",
+        "region": "Egypt",
+        "stack": "Next.js, TypeScript, Tailwind, Gemini",
+        "year": "2026",
+        "headline": "A Polish hardware brand, sold like an Egyptian one.",
+        "sub": "38 products rewritten in GTV's own marketing language, Arabic-first with an English edition, WhatsApp checkout, and a catalogue-trained agent that hands off to a human.",
+        "note": "GTV sells certified furniture fittings into Egypt, where B2B deals close on WhatsApp rather than on cards. We rebuilt all 38 products in GTV's own playbook — certified number first, mechanism second, benefit last — drew a black-and-gold identity for GTV EGYPT, wired cart and checkout into WhatsApp with prefilled order context, and trained a Gemini agent on the full catalogue so it qualifies a carpenter one question at a time before handing the conversation to Mahmoud.",
+        "pullquote": "In Egyptian B2B, checkout is a WhatsApp message — so every path on the site ends there.",
+        "details": [
+          "38-product catalogue with SKUs, specs and EGP pricing across five categories",
+          "Arabic-first RTL build with a complete English edition behind one toggle",
+          "Cart and checkout funneled to WhatsApp with prefilled order context; COD and tiered delivery",
+          "Custom black-and-gold GTV EGYPT identity: monogram, favicon, wordmark",
+          "Gemini sales agent trained on the full catalogue — qualifies, quotes, hands off on WhatsApp"
+        ],
+        "figures": [
+          {
+            "v": "38",
+            "l": "Products catalogued"
+          },
+          {
+            "v": "2",
+            "l": "Languages, RTL-first"
+          },
+          {
+            "v": "5",
+            "l": "Product categories"
+          },
+          {
+            "v": "1",
+            "l": "AI sales agent"
+          }
+        ]
+      },
+      {
+        "index": "04",
+        "title": "Roqqei",
+        "subtitle": "Egyptian women's fashion — built & scaled",
+        "chapter": "Chapter 04 — Roqqei",
+        "pages": "P. 112—127",
+        "plate": "Pl. 04.A",
         "category": "D2C · Performance marketing",
         "region": "Egypt",
         "stack": "Shopify, Meta Ads, CRO",
         "year": "2024 — now",
-        "headline": "My own brand, audited, rebuilt, and scaled.",
+        "headline": "A live Egyptian brand, audited, rebuilt, and scaled.",
         "sub": "Store audit, product pages rebuilt, prospecting and retargeting launched, checkout optimized, conversion tracking installed. Every number verified.",
-        "note": "Roqqei is the proof of work that cannot be borrowed: a live Egyptian fashion brand I own and operate. The store opened at a 0.49% conversion rate with no structured campaigns. We rebuilt the product pages, restructured the Meta account into prospecting and retargeting, and instrumented conversion tracking end to end.",
-        "pullquote": "When a conversion rate doubles, it doubles in my own store first.",
+        "note": "Roqqei is the proof of work that cannot be borrowed: a live Egyptian fashion brand I built and scaled. The store opened at a 0.49% conversion rate with no structured campaigns. We rebuilt the product pages, restructured the Meta account into prospecting and retargeting, and instrumented conversion tracking end to end.",
+        "pullquote": "From 0.49% to over 1% — every figure verified on a live dashboard, not estimated.",
         "details": [
           "Conversion rate lifted from 0.49% to over 1%",
           "4.2x average ROAS, CPA as low as EGP 42 per purchase",
@@ -300,7 +348,7 @@
   "about": {
     "eyebrow": "Colophon",
     "title": "About",
-    "bio": "I treat web development like print design: rigid grids, intentional typography, and uncompromising speed. Based in Egypt, I build custom digital experiences and Shopify stores for brands across the region — and I run my own, so the numbers on this page are lived, not estimated.",
+    "bio": "I treat web development like print design: rigid grids, intentional typography, and uncompromising speed. Based in Egypt, I build custom digital experiences and Shopify stores for brands across the region — and I stay on the metrics after launch, so the numbers on this page are lived, not estimated.",
     "meta": [
       {
         "k": "Based",
